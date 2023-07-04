@@ -13,14 +13,12 @@ final class TrackersPlaceholderView: UIView {
     private let placeholderImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "default")
         return imageView
     }()
     
     private let placeholderLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Что будем отслеживать?"
         label.font = UIFont.systemFont(ofSize: .size12, weight: .medium)
         label.textAlignment = .center
         return label
@@ -49,5 +47,17 @@ final class TrackersPlaceholderView: UIView {
     
     required init?(coder: NSCoder) {
         return nil
+    }
+}
+
+// MARK: - ConfigurableViewProtocol
+
+extension TrackersPlaceholderView: ConfigurableViewProtocol {
+
+    typealias ConfigurationModel = TrackersPlaceholderViewModel
+    
+    func configure(with model: ConfigurationModel) {
+        placeholderImageView.image = model.image
+        placeholderLabel.text = model.description
     }
 }

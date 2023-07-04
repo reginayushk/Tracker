@@ -19,7 +19,6 @@ extension CGFloat {
     static let margin22: CGFloat = 22
     static let margin24: CGFloat = 24
     static let margin28: CGFloat = 28
-    static let margin38: CGFloat = 38
     
     // MARK: - Size
     

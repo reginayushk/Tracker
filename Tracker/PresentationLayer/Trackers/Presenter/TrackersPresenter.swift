@@ -5,7 +5,7 @@
 //  Created by Regina Yushkova on 23.06.2023.
 //
 
-import Foundation
+import UIKit
 
 final class TrackersPresenter {
     
@@ -106,7 +106,9 @@ extension TrackersPresenter: TrackersPresenterProtocol {
         })
         
         viewController?.reloadCollection()
-        viewController?.reloadPlaceholder()
+        
+        let model = searchText?.isEmpty == false ? TrackersPlaceholderViewModel.emptySearchList : TrackersPlaceholderViewModel.emptyList
+        viewController?.reloadPlaceholder(model: model)
     }
     
     func obtainCompletedDays(indexPath: IndexPath) -> Int {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		500A7A692A41CA6700070C40 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500A7A682A41CA6700070C40 /* UIColor+Extensions.swift */; };
+		5017451E2A5463AE007A1400 /* TrackersPlaceholderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017451D2A5463AE007A1400 /* TrackersPlaceholderViewModel.swift */; };
 		501A4DF72A5082470071A559 /* GeometricParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A4DF62A5082470071A559 /* GeometricParams.swift */; };
 		501A4DFC2A52FB9C0071A559 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A4DFB2A52FB9C0071A559 /* UITableViewCell+Extensions.swift */; };
 		502347E52A41D2EE00D41D79 /* TrackersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502347E42A41D2EE00D41D79 /* TrackersViewController.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		500A7A682A41CA6700070C40 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		5017451D2A5463AE007A1400 /* TrackersPlaceholderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersPlaceholderViewModel.swift; sourceTree = "<group>"; };
 		501A4DF62A5082470071A559 /* GeometricParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometricParams.swift; sourceTree = "<group>"; };
 		501A4DFB2A52FB9C0071A559 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		502347E42A41D2EE00D41D79 /* TrackersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				504996622A45D4B900144E3A /* TrackersCollectionViewCellDelegate.swift */,
 				502347FA2A422EC600D41D79 /* TrackersHeader.swift */,
 				502347FC2A4234C000D41D79 /* TrackersPlaceholderView.swift */,
+				5017451D2A5463AE007A1400 /* TrackersPlaceholderViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				504996A92A4CC73600144E3A /* TimetableViewControllerDelegate.swift in Sources */,
 				504996862A49B56600144E3A /* NewTrackerTableViewCell.swift in Sources */,
 				502347FD2A4234C000D41D79 /* TrackersPlaceholderView.swift in Sources */,
+				5017451E2A5463AE007A1400 /* TrackersPlaceholderViewModel.swift in Sources */,
 				504996612A45C88200144E3A /* ConfigurableViewProtocol.swift in Sources */,
 				5049968C2A49FA4D00144E3A /* TimetableViewController.swift in Sources */,
 			);

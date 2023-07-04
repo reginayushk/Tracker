@@ -91,6 +91,7 @@ final class TrackersViewController: UIViewController {
     private func setUpNavigationBar() {
         if let navBar = navigationController?.navigationBar {
             let leftButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewTracker))
+            leftButton.tintColor = .ypBlack
             navBar.topItem?.setLeftBarButton(leftButton, animated: false)
             
             let rightButton = UIBarButtonItem(customView: datePicker)
@@ -106,8 +107,7 @@ final class TrackersViewController: UIViewController {
     
     private func setUp() {
         view.backgroundColor = .systemBackground
-        view.addSubview(trackersCollectionView)
-        view.addSubview(placeholderView)
+        [trackersCollectionView, placeholderView].forEach { view.addSubview($0) }
         
         NSLayoutConstraint.activate([
             trackersCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -143,7 +143,7 @@ extension TrackersViewController: UISearchControllerDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchText = ""
         isFiltered = false
-        trackersCollectionView.reloadData()
+        presenter.reloadVisibleCategories(searchText: nil)
     }
 }
 
@@ -264,7 +264,8 @@ extension TrackersViewController: TrackersViewControllerProtocol {
         trackersCollectionView.reloadData()
     }
     
-    func reloadPlaceholder() {
+    func reloadPlaceholder(model: TrackersPlaceholderViewModel) {
         placeholderView.isHidden = presenter.placeholderShouldBeHidden()
+        placeholderView.configure(with: model)
     }
 }

@@ -105,7 +105,7 @@ extension NewTrackerPresenter: NewTrackerPresenterProtocol {
     }
     
     func saveNewTracker() {
-        guard let selectedTrackerName else { return }
+        guard let selectedTrackerName, let selectedCategory else { return }
         let newTracker = Tracker(
             id: UUID(),
             name: selectedTrackerName,
@@ -113,7 +113,12 @@ extension NewTrackerPresenter: NewTrackerPresenterProtocol {
             emoji: selectedEmoji,
             repetition: Set(sortedTimetable)
         )
-        dataManager.categories[0].trackers.append(newTracker)
+        let category = TrackerCategory(
+            name: selectedCategory.name,
+            trackers: selectedCategory.trackers + [newTracker]
+        )
+
+        dataManager.categories[0] = category
         
         NotificationCenter.default.post(
             name: Notification.Name("TrackerDataModelChanged"),

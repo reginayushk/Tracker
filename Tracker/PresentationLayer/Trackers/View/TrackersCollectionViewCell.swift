@@ -50,7 +50,11 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    private let trackerRepetitionLabel = UILabel()
+    private let trackerRepetitionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: .size12, weight: .medium)
+        return label
+    }()
     
     private lazy var trackerCompletionButton: UIButton = {
         let button = UIButton()

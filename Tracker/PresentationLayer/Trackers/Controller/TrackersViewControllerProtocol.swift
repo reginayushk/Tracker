@@ -9,5 +9,5 @@ import Foundation
 
 protocol TrackersViewControllerProtocol: AnyObject {
     func reloadCollection()
-    func reloadPlaceholder()
+    func reloadPlaceholder(model: TrackersPlaceholderViewModel)
 }

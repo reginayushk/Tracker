@@ -142,7 +142,7 @@ final class NewTrackerViewController: UIViewController {
     @objc
     private func createButtonDidTap() {
         presenter.saveNewTracker()
-        dismiss(animated: true)
+        presentingViewController?.presentingViewController?.dismiss(animated: true)
     }
     
     @objc
