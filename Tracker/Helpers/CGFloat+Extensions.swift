@@ -19,6 +19,7 @@ extension CGFloat {
     static let margin22: CGFloat = 22
     static let margin24: CGFloat = 24
     static let margin28: CGFloat = 28
+    static let margin32: CGFloat = 32
     
     // MARK: - Size
     
@@ -26,9 +27,11 @@ extension CGFloat {
     static let size16: CGFloat = 16
     static let size17: CGFloat = 17
     static let size19: CGFloat = 19
+    static let size32: CGFloat = 32
     
     // MARK: - CornerRadius
     
+    static let cornerRadius8: CGFloat = 8
     static let cornerRadius12: CGFloat = 12
     static let cornerRadius16: CGFloat = 16
     static let cornerRadius17: CGFloat = 17

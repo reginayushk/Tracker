@@ -8,6 +8,20 @@
 import Foundation
 
 final class DIStorage: DIStorageProtocol {
+    
+    // MARK: - Core
+    
+    private(set) lazy var trackerStore: TrackerStoreProtocol = {
+        TrackerStore()
+    }()
+    
+    private(set) lazy var trackerCategoryStore: TrackerCategoryStoreProtocol = {
+        TrackerCategoryStore()
+    }()
+    
+    private(set) lazy var trackerRecordStore: TrackerRecordStoreProtocol = {
+        TrackerRecordStore()
+    }()
 
     // MARK: - Presentation
 

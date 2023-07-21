@@ -68,17 +68,19 @@ final class TrackersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.filterTrackersByDate()
-        trackersCollectionView.reloadData()
+        
         setUpNavigationBar()
         setUp()
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(trackerDataModelChanged),
-            name: Notification.Name("TrackerDataModelChanged"),
-            object: nil
-        )
+        presenter.fetchTrackerCategories()
+        presenter.filterTrackersByDate()
+        
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(trackerDataModelChanged),
+//            name: Notification.Name("TrackerDataModelChanged"),
+//            object: nil
+//        )
     }
     
     override func viewDidLayoutSubviews() {
@@ -131,10 +133,10 @@ final class TrackersViewController: UIViewController {
         presenter.filterTrackersByDate()
     }
     
-    @objc
-    private func trackerDataModelChanged(_ notification: Notification) {
-        presenter.trackerDataModelChanged(notification)
-    }
+//    @objc
+//    private func trackerDataModelChanged(_ notification: Notification) {
+//        presenter.trackerDataModelChanged(notification)
+//    }
 }
 
 // MARK: - UISearchControllerDelegate
@@ -220,12 +222,15 @@ extension TrackersViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let trackerCell = trackersCollectionView.dequeueReusableCell(
-            withReuseIdentifier: "cell", for: indexPath) as? TrackersCollectionViewCell
+        guard
+            let trackerCell = trackersCollectionView.dequeueReusableCell(
+                withReuseIdentifier: "cell",
+                for: indexPath
+            ) as? TrackersCollectionViewCell,
+            let model = presenter.chooseViewModel(for: indexPath)
         else { return UICollectionViewCell() }
-        trackerCell.delegate = self
 
-        let model = presenter.chooseViewModel(for: indexPath)
+        trackerCell.delegate = self
         trackerCell.configure(with: model)
 
         let isCompleted = presenter.checkCompletedTrackers(indexPath: indexPath)
@@ -236,9 +241,17 @@ extension TrackersViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let view = trackersCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? TrackersHeader else { return UICollectionReusableView() }
+        guard
+            let view = trackersCollectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "header",
+                for: indexPath
+            ) as? TrackersHeader,
+            let model = presenter.chooseViewModelForHeader(at: indexPath)
+        else {
+            return UICollectionReusableView()
+        }
 
-        let model = presenter.chooseViewModelForHeader(for: indexPath)
         view.configure(with: model)
         
         return view
@@ -267,5 +280,30 @@ extension TrackersViewController: TrackersViewControllerProtocol {
     func reloadPlaceholder(model: TrackersPlaceholderViewModel) {
         placeholderView.isHidden = presenter.placeholderShouldBeHidden()
         placeholderView.configure(with: model)
+    }
+}
+
+// MARK: - TrackerStoreDelegate
+
+extension TrackersViewController: TrackerStoreDelegate {
+
+    func didUpdateTracker() {
+        presenter.reloadVisibleCategories(searchText: nil)
+    }
+}
+
+// MARK: - TrackerCategoryStoreDelegate
+
+extension TrackersViewController: TrackerCategoryStoreDelegate {
+
+    func didUpdateTrackerCategory() {
+    }
+}
+
+// MARK: - TrackerRecordStoreDelegate
+
+extension TrackersViewController: TrackerRecordStoreDelegate {
+
+    func didUpdateTrackerRecord() {
     }
 }

@@ -10,7 +10,19 @@ import UIKit
 final class TabBarController: UITabBarController {
     
     // Dependencies
-    private(set) lazy var dependenciesStorage: DIStorageProtocol = DIStorage()
+    private let dependenciesStorage: DIStorageProtocol
+
+    // MARK: - Initialize
+    
+    init(dependenciesStorage: DIStorageProtocol) {
+        self.dependenciesStorage = dependenciesStorage
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable, message: "init(coder:) has not been implemented")
+    required init?(coder: NSCoder) {
+        return nil
+    }
     
     // MARK: - Lifecycle
 

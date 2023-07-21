@@ -8,6 +8,10 @@
 import Foundation
 
 protocol DIStorageProtocol {
+    var trackerStore: TrackerStoreProtocol { get }
+    var trackerCategoryStore: TrackerCategoryStoreProtocol { get }
+    var trackerRecordStore: TrackerRecordStoreProtocol { get }
+    
     var timetableAssembly: TimetableAssemblyProtocol { get }
     var newTrackerAssembly: NewTrackerAssemblyProtocol { get }
     var trackersCreateAssembly: TrackersCreateAssemblyProtocol { get }

@@ -30,7 +30,10 @@ final class NewTrackerRouter: NewTrackerRouterProtocol {
     }
     
     func presentTimetable(chosenTimetable: Set<WeekDay>?) {
-        let timetableViewController = timetableAssembly.assemble(delegate: timetableDelegate, chosenTimetable: chosenTimetable)
+        let timetableViewController = timetableAssembly.assemble(
+            delegate: timetableDelegate,
+            chosenTimetable: chosenTimetable
+        )
         transitionHandler?.navigationController?.present(timetableViewController, animated: true)
     }
 }

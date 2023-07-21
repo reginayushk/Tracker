@@ -21,7 +21,11 @@ final class TrackersAssembly: TrackersAssemblyProtocol {
     // MARK: - TrackersAssemblyProtocol
     
     func assemble() -> UIViewController {
-        let presenter = TrackersPresenter()
+        let presenter = TrackersPresenter(
+            trackerStore: dependencies.trackerStore,
+            trackerCategoryStore: dependencies.trackerCategoryStore,
+            trackerRecordStore: dependencies.trackerRecordStore
+        )
         
         let controller = TrackersViewController(
             presenter: presenter,
@@ -29,6 +33,7 @@ final class TrackersAssembly: TrackersAssemblyProtocol {
         )
         
         presenter.viewController = controller
+        dependencies.trackerStore.delegate = controller
 
         return controller
     }
