@@ -571,17 +571,9 @@
 			path = TrackerTimetable;
 			sourceTree = "<group>";
 		};
-		50DDA4212A687CFA00ED0CF6 /* TrackerTimetable */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TrackerTimetable;
-			sourceTree = "<group>";
-		};
 		50E0641B2A654FE3006BE3FE /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				50DDA4212A687CFA00ED0CF6 /* TrackerTimetable */,
 				50E064502A6717E7006BE3FE /* Protocols */,
 				50E0642B2A65786A006BE3FE /* Tracker */,
 				50E0642C2A65787E006BE3FE /* TrackerCategory */,
