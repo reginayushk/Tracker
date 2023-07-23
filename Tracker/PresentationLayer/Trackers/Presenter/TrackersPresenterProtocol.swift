@@ -25,5 +25,4 @@ protocol TrackersPresenterProtocol {
     func update(currentDate: Date)
     func placeholderShouldBeHidden() -> Bool
     func obtainCompletedDays(indexPath: IndexPath) -> Int
-//    func trackerDataModelChanged(_ notification: Notification)
 }

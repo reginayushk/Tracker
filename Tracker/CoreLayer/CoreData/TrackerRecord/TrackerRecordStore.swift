@@ -52,12 +52,6 @@ final class TrackerRecordStore: NSObject {
 
 extension TrackerRecordStore: TrackerRecordStoreProtocol {
     
-//    func fetchRecords() throws -> [TrackerRecord] {
-//        let fetchRequest = TrackerRecordCoreData.fetchRequest()
-//        let trackerRecordFromCoreData = try context.fetch(fetchRequest)
-//        return try trackerRecordFromCoreData.map { try TrackerRecord.from(coreDataModel: $0) }
-//    }
-    
     func addNewTrackerRecord(_ trackerRecord: TrackerRecord, for tracker: Tracker) throws {
         let trackerFetchRequest = TrackerCoreData.fetchRequest()
         trackerFetchRequest.predicate = NSPredicate(format: "id == %@", tracker.id as CVarArg)

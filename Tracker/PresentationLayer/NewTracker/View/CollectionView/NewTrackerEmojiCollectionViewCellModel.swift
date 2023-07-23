@@ -11,7 +11,7 @@ final class NewTrackerEmojiCollectionViewCellModel {
     
     let emoji: String
     
-    internal init(emoji: String) {
+    init(emoji: String) {
         self.emoji = emoji
     }
 }

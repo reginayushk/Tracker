@@ -11,7 +11,7 @@ final class NewTrackerColorCollectionViewCellModel {
     
     let color: UIColor
     
-    internal init(color: UIColor) {
+    init(color: UIColor) {
         self.color = color
     }
 }

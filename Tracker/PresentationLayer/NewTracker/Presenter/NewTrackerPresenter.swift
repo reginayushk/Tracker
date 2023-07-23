@@ -42,7 +42,7 @@ final class NewTrackerPresenter {
 
     private var sortedTimetable: [TrackerTimetable] = []
     private lazy var selectedCategory: TrackerCategory? = try? trackerCategoryStore.fetchCategories().first
-    private lazy var selectedTrackerName: String? = ""
+    private lazy var selectedTrackerName = ""
     private var selectedColor: NewTrackerColorCollectionViewCellModel?
     private var selectedEmoji: NewTrackerEmojiCollectionViewCellModel?
     
@@ -134,13 +134,13 @@ extension NewTrackerPresenter: NewTrackerPresenterProtocol {
     }
     
     func setTrackerName(text: String?) {
+        guard let text else { return }
         selectedTrackerName = text
         toggleCreateButtonIfNeeded()
     }
     
     func saveNewTracker() {
         guard
-            let selectedTrackerName,
             let selectedCategory,
             let selectedEmoji,
             let selectedColor
@@ -155,12 +155,6 @@ extension NewTrackerPresenter: NewTrackerPresenterProtocol {
         )
 
         try! trackerStore.addNewTracker(newTracker, at: selectedCategory)
-        
-//        NotificationCenter.default.post(
-//            name: Notification.Name("TrackerDataModelChanged"),
-//            object: nil,
-//            userInfo: nil
-//        )
     }
     
     func saveSelectedEmoji(emoji: NewTrackerEmojiCollectionViewCellModel) {
@@ -185,8 +179,7 @@ extension NewTrackerPresenter: NewTrackerPresenterProtocol {
     
     private func toggleCreateButtonIfNeeded() {
         guard
-            let trackerName = selectedTrackerName,
-            !trackerName.isEmpty,
+            !selectedTrackerName.isEmpty,
             selectedCategory != nil,
             selectedEmoji != nil,
             selectedColor != nil

@@ -74,13 +74,6 @@ final class TrackersViewController: UIViewController {
         
         presenter.fetchTrackerCategories()
         presenter.filterTrackersByDate()
-        
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(trackerDataModelChanged),
-//            name: Notification.Name("TrackerDataModelChanged"),
-//            object: nil
-//        )
     }
     
     override func viewDidLayoutSubviews() {
@@ -132,11 +125,6 @@ final class TrackersViewController: UIViewController {
         presenter.update(currentDate: datePicker.date)
         presenter.filterTrackersByDate()
     }
-    
-//    @objc
-//    private func trackerDataModelChanged(_ notification: Notification) {
-//        presenter.trackerDataModelChanged(notification)
-//    }
 }
 
 // MARK: - UISearchControllerDelegate

@@ -60,12 +60,6 @@ final class TrackerStore: NSObject {
 // MARK: - TrackerStoreProtocol
 
 extension TrackerStore: TrackerStoreProtocol {
-
-//    func fetchTrackers() throws -> [Tracker] {
-//        let fetchRequest = TrackerCoreData.fetchRequest()
-//        let trackerFromCoreData = try context.fetch(fetchRequest)
-//        return try trackerFromCoreData.map { try Tracker.from(coreDataModel: $0) }
-//    }
     
     func addNewTracker(_ tracker: Tracker, at category: TrackerCategory) throws {
         let categoryFetchRequest = TrackerCategoryCoreData.fetchRequest()

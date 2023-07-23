@@ -8,7 +8,6 @@
 import Foundation
 
 protocol TrackerRecordStoreProtocol: AnyObject {
-//    func fetchRecords() throws -> [TrackerRecord]
     func addNewTrackerRecord(_ trackerRecord: TrackerRecord, for tracker: Tracker) throws
     func deleteTrackerRecord(_ trackerRecord: TrackerRecord) throws
 }

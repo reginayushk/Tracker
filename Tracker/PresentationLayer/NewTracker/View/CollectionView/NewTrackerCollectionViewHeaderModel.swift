@@ -11,7 +11,7 @@ final class NewTrackerCollectionViewHeaderModel {
 
     let title: String
     
-    internal init(title: String) {
+    init(title: String) {
         self.title = title
     }
 }
