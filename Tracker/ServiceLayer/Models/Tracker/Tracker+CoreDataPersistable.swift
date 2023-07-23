@@ -52,7 +52,7 @@ extension Tracker: CoreDataPersistable {
         
         var repetition: Set<TrackerTimetable>?
         
-        if let cdRepetition = coreDataModel.repetition?.allObjects as? [TrackerTimetableCoreData] {
+        if let cdRepetition = coreDataModel.repetition?.allObjects as? [TrackerTimetableCoreData], !cdRepetition.isEmpty {
             let arrayRepetition = try cdRepetition.compactMap { try TrackerTimetable.from(coreDataModel: $0) }
             repetition = Set(arrayRepetition)
         }

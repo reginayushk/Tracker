@@ -135,27 +135,106 @@ extension TrackersPresenter: TrackersPresenterProtocol {
         
         let filterWeekday = calendar.component(.weekday, from: selectedDate)
         
-        var predicates: [NSPredicate] = []
+        // Irregular predicates
+                
+        let predicateForNullRepetition = NSPredicate(
+            format: "ANY %K == nil",
+            #keyPath(TrackerCoreData.repetition)
+        )
+
+        let predicateForEmptyRepetition = NSPredicate(
+            format: "%K.@count == 0",
+            #keyPath(TrackerCoreData.repetition)
+        )
         
-        let predicateForDate = NSPredicate(
+        let predicatesForIrregular = NSCompoundPredicate(
+            orPredicateWithSubpredicates: [
+                predicateForNullRepetition,
+                predicateForEmptyRepetition
+            ]
+        )
+        
+        // Not Completed Irregular predicates
+                
+        let predicateForNilRecordIrregular = NSPredicate(
+            format: "ANY %K == nil",
+            #keyPath(TrackerCoreData.trackerRecord)
+        )
+
+        let predicateForEmptyRecordIrregular = NSPredicate(
+            format: "%K.@count == 0",
+            #keyPath(TrackerCoreData.trackerRecord)
+        )
+        
+        let predicateRecordExist = NSCompoundPredicate(
+            orPredicateWithSubpredicates: [
+                predicateForNilRecordIrregular,
+                predicateForEmptyRecordIrregular
+            ]
+        )
+
+        let predicatesForNotCompletedIrregular = NSCompoundPredicate(
+            andPredicateWithSubpredicates: [
+                predicatesForIrregular,
+                predicateRecordExist
+            ]
+        )
+        
+        // Completed Irregular predicates
+        
+        let predicateForRecordIrregular = NSPredicate(
+            format: "ANY trackerRecord.date >= %@ && ANY trackerRecord.date <= %@",
+            selectedDate.startOfDay as CVarArg,
+            selectedDate.endOfDay as CVarArg
+        )
+        
+        let predicatesForCompletedIrregular = NSCompoundPredicate(
+            andPredicateWithSubpredicates: [
+                predicatesForIrregular,
+                predicateForRecordIrregular
+            ]
+        )
+
+        // Irregular predicate
+        
+        let predicateIrregular = NSCompoundPredicate(
+            orPredicateWithSubpredicates: [
+                predicatesForNotCompletedIrregular,
+                predicatesForCompletedIrregular
+            ]
+        )
+        
+        // Regular predicates
+                
+        let predicateRegularForRepetitionDate = NSPredicate(
             format: "ANY %K IN %@",
             "repetition.value",
             [filterWeekday]
         )
-        predicates.append(predicateForDate)
-
+        
+        let predicateTracker = NSCompoundPredicate(
+            orPredicateWithSubpredicates: [
+                predicateIrregular,
+                predicateRegularForRepetitionDate
+            ]
+        )
+        
+        var predicate = predicateTracker
+        
+        // SearchText predicates
+        
         if let filterText = searchText?.lowercased(), !filterText.isEmpty {
             let predicateForSearchText = NSPredicate(
-                format: "%K CONTAINS[n] %@",
+                format: "%K CONTAINS[cd] %@",
                 #keyPath(TrackerCoreData.name),
                 filterText
             )
-            predicates.append(predicateForSearchText)
+            predicate = NSCompoundPredicate(
+                andPredicateWithSubpredicates: [predicateTracker, predicateForSearchText]
+            )
         }
         
-        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         let fetchedResultsController = trackerStore.fetchedResultsController
-        
         fetchedResultsController.fetchRequest.predicate = predicate
         try! fetchedResultsController.performFetch()
         
@@ -170,5 +249,19 @@ extension TrackersPresenter: TrackersPresenterProtocol {
     
     func obtainCompletedDays(indexPath: IndexPath) -> Int {
         return trackerRecordsCoreData(for: indexPath).count
+    }
+}
+
+extension Date {
+    
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    
+    var endOfDay: Date {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startOfDay)!
     }
 }
