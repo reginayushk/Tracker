@@ -1,23 +1,15 @@
 //
-//  Tracker.swift
+//  TrackerTimetable.swift
 //  Tracker
 //
-//  Created by Regina Yushkova on 20.06.2023.
+//  Created by Regina Yushkova on 18.07.2023.
 //
 
-import UIKit
-
-struct Tracker {
-    let id: UUID
-    let name: String
-    let color: UIColor
-    let emoji: String
-    let repetition: Set<TrackerTimetable>?
-}
+import Foundation
 
 enum TrackerTimetable: Int, Comparable, CaseIterable {
     case sunday = 1
-    case monday 
+    case monday
     case tuesday
     case wednesday
     case thursday

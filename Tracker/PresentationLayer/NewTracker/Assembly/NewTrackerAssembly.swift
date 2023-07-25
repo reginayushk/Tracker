@@ -25,7 +25,9 @@ final class NewTrackerAssembly: NewTrackerAssemblyProtocol {
         
         let presenter = NewTrackerPresenter(
             router: router,
-            isRegular: isRegular
+            isRegular: isRegular,
+            trackerStore: dependencies.trackerStore,
+            trackerCategoryStore: dependencies.trackerCategoryStore
         )
         
         let controller = NewTrackerViewController(presenter: presenter)

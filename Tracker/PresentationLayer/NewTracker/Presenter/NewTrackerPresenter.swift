@@ -12,6 +12,8 @@ final class NewTrackerPresenter {
     // Dependencies
     weak var viewController: NewTrackerViewControllerProtocol?
     private let router: NewTrackerRouterProtocol
+    private let trackerStore: TrackerStoreProtocol
+    private let trackerCategoryStore: TrackerCategoryStoreProtocol
     
     // MARK: - Private Properties
     
@@ -33,23 +35,31 @@ final class NewTrackerPresenter {
         }
         return options
     }()
-    private lazy var selectedTrackerName: String? = ""
-    private lazy var selectedCategory: TrackerCategory? = dataManager.categories.first
+    private lazy var emojiHeader = NewTrackerCollectionViewHeaderModel(title: "Emoji")
+    private lazy var colorHeader = NewTrackerCollectionViewHeaderModel(title: "Цвет")
+
+    private let dataSourceProvider: DataSourceProviderProtocol = DataSourceProvider()
+
     private var sortedTimetable: [TrackerTimetable] = []
-    private let dataManager = DataManager.shared
-    private let selectedColor: UIColor = .ypColorSection4
-    private let selectedEmoji: String = "🐣"
+    private lazy var selectedCategory: TrackerCategory? = try? trackerCategoryStore.fetchCategories().first
+    private lazy var selectedTrackerName = ""
+    private var selectedColor: NewTrackerColorCollectionViewCellModel?
+    private var selectedEmoji: NewTrackerEmojiCollectionViewCellModel?
     
     // MARK: - Initialize
     
     init(
         viewController: NewTrackerViewControllerProtocol? = nil,
         router: NewTrackerRouterProtocol,
-        isRegular: Bool
+        isRegular: Bool,
+        trackerStore: TrackerStoreProtocol,
+        trackerCategoryStore: TrackerCategoryStoreProtocol
     ) {
         self.viewController = viewController
         self.router = router
         self.isRegular = isRegular
+        self.trackerStore = trackerStore
+        self.trackerCategoryStore = trackerCategoryStore
     }
 }
 
@@ -61,12 +71,36 @@ extension NewTrackerPresenter: NewTrackerPresenterProtocol {
         return isRegular ? "Новая привычка" : "Новое нерегулярное событие"
     }
     
+    func numberOfItemsInEmojiCollectionView() -> Int {
+        return dataSourceProvider.emojies.count
+    }
+    
+    func numberOfItemsInColorCollectionView() -> Int {
+        return dataSourceProvider.colors.count
+    }
+    
     func numberOfRows() -> Int {
         return options.count
     }
     
     func chooseViewModel(for indexPath: IndexPath) -> NewTrackerTableViewCellModel {
         return options[indexPath.row]
+    }
+    
+    func chooseViewModelForEmojiHeader() -> NewTrackerCollectionViewHeaderModel {
+        return emojiHeader
+    }
+    
+    func chooseViewModelForColorHeader() -> NewTrackerCollectionViewHeaderModel {
+        return colorHeader
+    }
+    
+    func chooseViewModelForEmoji(indexPath: IndexPath) -> NewTrackerEmojiCollectionViewCellModel {
+        return dataSourceProvider.emojies[indexPath.row]
+    }
+    
+    func chooseViewModelForColor(indexPath: IndexPath) -> NewTrackerColorCollectionViewCellModel {
+        return dataSourceProvider.colors[indexPath.row]
     }
 
     func weekDaysDidReceive(chosenTimetable: Set<WeekDay>) {
@@ -100,40 +134,55 @@ extension NewTrackerPresenter: NewTrackerPresenterProtocol {
     }
     
     func setTrackerName(text: String?) {
+        guard let text else { return }
         selectedTrackerName = text
         toggleCreateButtonIfNeeded()
     }
     
     func saveNewTracker() {
-        guard let selectedTrackerName, let selectedCategory else { return }
+        guard
+            let selectedCategory,
+            let selectedEmoji,
+            let selectedColor
+        else { return }
+        
         let newTracker = Tracker(
             id: UUID(),
             name: selectedTrackerName,
-            color: selectedColor,
-            emoji: selectedEmoji,
+            color: selectedColor.color,
+            emoji: selectedEmoji.emoji,
             repetition: Set(sortedTimetable)
         )
-        let category = TrackerCategory(
-            name: selectedCategory.name,
-            trackers: selectedCategory.trackers + [newTracker]
-        )
 
-        dataManager.categories[0] = category
-        
-        NotificationCenter.default.post(
-            name: Notification.Name("TrackerDataModelChanged"),
-            object: nil,
-            userInfo: nil
-        )
+        try! trackerStore.addNewTracker(newTracker, at: selectedCategory)
+    }
+    
+    func saveSelectedEmoji(emoji: NewTrackerEmojiCollectionViewCellModel) {
+        self.selectedEmoji = emoji
+        toggleCreateButtonIfNeeded()
+    }
+    
+    func saveSelectedColor(color: NewTrackerColorCollectionViewCellModel) {
+        self.selectedColor = color
+        toggleCreateButtonIfNeeded()
+    }
+    
+    func deleteSelectedEmoji() {
+        self.selectedEmoji = nil
+    }
+    
+    func deleteSelectedColor() {
+        self.selectedColor = nil
     }
     
     // MARK: - Private
     
     private func toggleCreateButtonIfNeeded() {
         guard
-            let trackerName = selectedTrackerName,
-            !trackerName.isEmpty,
-            selectedCategory != nil
+            !selectedTrackerName.isEmpty,
+            selectedCategory != nil,
+            selectedEmoji != nil,
+            selectedColor != nil
         else {
             viewController?.setCreateButtonEnabled(isEnabled: false)
             return
