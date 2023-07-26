@@ -62,6 +62,17 @@
 		504996BA2A4F447600144E3A /* NewTrackerRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504996B92A4F447600144E3A /* NewTrackerRouterProtocol.swift */; };
 		504996BC2A4F6C5F00144E3A /* NewTrackerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504996BB2A4F6C5F00144E3A /* NewTrackerViewControllerDelegate.swift */; };
 		504996C02A4FA4DD00144E3A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504996BF2A4FA4DD00144E3A /* TabBarController.swift */; };
+		50BAB7C12A704B6C007E0D41 /* RootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7C02A704B6C007E0D41 /* RootPageViewController.swift */; };
+		50BAB7C42A7117F4007E0D41 /* RootTabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7C32A7117F4007E0D41 /* RootTabBarAssembly.swift */; };
+		50BAB7C62A711804007E0D41 /* RootTabBarAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7C52A711804007E0D41 /* RootTabBarAssemblyProtocol.swift */; };
+		50BAB7C92A712681007E0D41 /* RootPageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7C82A712681007E0D41 /* RootPageRouter.swift */; };
+		50BAB7CD2A7126C1007E0D41 /* RootPageRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7CC2A7126C1007E0D41 /* RootPageRouterProtocol.swift */; };
+		50BAB7D02A7127F4007E0D41 /* RootPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7CF2A7127F4007E0D41 /* RootPagePresenter.swift */; };
+		50BAB7D22A712803007E0D41 /* RootPagePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7D12A712803007E0D41 /* RootPagePresenterProtocol.swift */; };
+		50BAB7D52A712DA3007E0D41 /* RootPageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7D42A712DA3007E0D41 /* RootPageAssembly.swift */; };
+		50BAB7D72A712DBB007E0D41 /* RootPageAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7D62A712DBB007E0D41 /* RootPageAssemblyProtocol.swift */; };
+		50BAB7DB2A715CF1007E0D41 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7DA2A715CF1007E0D41 /* OnboardingPageViewController.swift */; };
+		50BAB7E02A716469007E0D41 /* OnboardingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7DF2A716469007E0D41 /* OnboardingPageModel.swift */; };
 		50DDA4202A687BDE00ED0CF6 /* TrackerTimetable+CoreDataPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DDA41F2A687BDE00ED0CF6 /* TrackerTimetable+CoreDataPersistable.swift */; };
 		50DDA4232A687D1900ED0CF6 /* TrackerTimeTableCastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DDA4222A687D1900ED0CF6 /* TrackerTimeTableCastError.swift */; };
 		50E0641D2A655006006BE3FE /* TrackerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E0641C2A655006006BE3FE /* TrackerStore.swift */; };
@@ -150,6 +161,17 @@
 		504996B92A4F447600144E3A /* NewTrackerRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerRouterProtocol.swift; sourceTree = "<group>"; };
 		504996BB2A4F6C5F00144E3A /* NewTrackerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerViewControllerDelegate.swift; sourceTree = "<group>"; };
 		504996BF2A4FA4DD00144E3A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		50BAB7C02A704B6C007E0D41 /* RootPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageViewController.swift; sourceTree = "<group>"; };
+		50BAB7C32A7117F4007E0D41 /* RootTabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarAssembly.swift; sourceTree = "<group>"; };
+		50BAB7C52A711804007E0D41 /* RootTabBarAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarAssemblyProtocol.swift; sourceTree = "<group>"; };
+		50BAB7C82A712681007E0D41 /* RootPageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageRouter.swift; sourceTree = "<group>"; };
+		50BAB7CC2A7126C1007E0D41 /* RootPageRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageRouterProtocol.swift; sourceTree = "<group>"; };
+		50BAB7CF2A7127F4007E0D41 /* RootPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPagePresenter.swift; sourceTree = "<group>"; };
+		50BAB7D12A712803007E0D41 /* RootPagePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPagePresenterProtocol.swift; sourceTree = "<group>"; };
+		50BAB7D42A712DA3007E0D41 /* RootPageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageAssembly.swift; sourceTree = "<group>"; };
+		50BAB7D62A712DBB007E0D41 /* RootPageAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageAssemblyProtocol.swift; sourceTree = "<group>"; };
+		50BAB7DA2A715CF1007E0D41 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
+		50BAB7DF2A716469007E0D41 /* OnboardingPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageModel.swift; sourceTree = "<group>"; };
 		50DDA41F2A687BDE00ED0CF6 /* TrackerTimetable+CoreDataPersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackerTimetable+CoreDataPersistable.swift"; sourceTree = "<group>"; };
 		50DDA4222A687D1900ED0CF6 /* TrackerTimeTableCastError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTimeTableCastError.swift; sourceTree = "<group>"; };
 		50E0641C2A655006006BE3FE /* TrackerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerStore.swift; sourceTree = "<group>"; };
@@ -226,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				501A4DF82A52FB7F0071A559 /* Shared */,
+				50BAB7BE2A704B2D007E0D41 /* RootPageViewController */,
 				504996BD2A4FA4BC00144E3A /* RootTabBar */,
 				504996892A49F9C100144E3A /* Timetable */,
 				504996752A47112E00144E3A /* NewTracker */,
@@ -548,6 +571,7 @@
 		504996BD2A4FA4BC00144E3A /* RootTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				50BAB7C22A7117DC007E0D41 /* Assembly */,
 				504996BE2A4FA4CD00144E3A /* Controller */,
 			);
 			path = RootTabBar;
@@ -559,6 +583,71 @@
 				504996BF2A4FA4DD00144E3A /* TabBarController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		50BAB7BE2A704B2D007E0D41 /* RootPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				50BAB7D32A712D7E007E0D41 /* Assembly */,
+				50BAB7BF2A704B57007E0D41 /* Controller */,
+				50BAB7DE2A716453007E0D41 /* Model */,
+				50BAB7CE2A7127DF007E0D41 /* Presenter */,
+				50BAB7C72A71265B007E0D41 /* Router */,
+			);
+			path = RootPageViewController;
+			sourceTree = "<group>";
+		};
+		50BAB7BF2A704B57007E0D41 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				50BAB7C02A704B6C007E0D41 /* RootPageViewController.swift */,
+				50BAB7DA2A715CF1007E0D41 /* OnboardingPageViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		50BAB7C22A7117DC007E0D41 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				50BAB7C32A7117F4007E0D41 /* RootTabBarAssembly.swift */,
+				50BAB7C52A711804007E0D41 /* RootTabBarAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		50BAB7C72A71265B007E0D41 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				50BAB7C82A712681007E0D41 /* RootPageRouter.swift */,
+				50BAB7CC2A7126C1007E0D41 /* RootPageRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		50BAB7CE2A7127DF007E0D41 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				50BAB7CF2A7127F4007E0D41 /* RootPagePresenter.swift */,
+				50BAB7D12A712803007E0D41 /* RootPagePresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		50BAB7D32A712D7E007E0D41 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				50BAB7D42A712DA3007E0D41 /* RootPageAssembly.swift */,
+				50BAB7D62A712DBB007E0D41 /* RootPageAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		50BAB7DE2A716453007E0D41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				50BAB7DF2A716469007E0D41 /* OnboardingPageModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		50DDA41E2A687BC900ED0CF6 /* TrackerTimetable */ = {
@@ -756,10 +845,13 @@
 				504996AD2A4EFC4500144E3A /* DIStorage.swift in Sources */,
 				5049967D2A47117800144E3A /* NewTrackerViewControllerProtocol.swift in Sources */,
 				504996BA2A4F447600144E3A /* NewTrackerRouterProtocol.swift in Sources */,
+				50BAB7C92A712681007E0D41 /* RootPageRouter.swift in Sources */,
+				50BAB7D72A712DBB007E0D41 /* RootPageAssemblyProtocol.swift in Sources */,
 				50E9884A2A55765500E4B375 /* NewTrackerCollectionViewHeaderModel.swift in Sources */,
 				504996932A49FA9B00144E3A /* TimetableAssemblyProtocol.swift in Sources */,
 				504996A32A4C88A300144E3A /* NewTrackerPresenter.swift in Sources */,
 				502348032A423A3800D41D79 /* TrackerRecord.swift in Sources */,
+				50BAB7D02A7127F4007E0D41 /* RootPagePresenter.swift in Sources */,
 				504996B52A4F349400144E3A /* DataManager.swift in Sources */,
 				5049966A2A45EDEB00144E3A /* TrackersCreateViewController.swift in Sources */,
 				5049969E2A4C743F00144E3A /* TimetablePresenter.swift in Sources */,
@@ -772,6 +864,7 @@
 				5049965C2A45C0F400144E3A /* TrackersViewControllerProtocol.swift in Sources */,
 				502347F82A422E6200D41D79 /* TrackersCollectionViewCell.swift in Sources */,
 				504996962A4C3C6100144E3A /* TimetableTableViewCell.swift in Sources */,
+				50BAB7D22A712803007E0D41 /* RootPagePresenterProtocol.swift in Sources */,
 				504996AB2A4CD21800144E3A /* NewTrackerTableViewCellModel.swift in Sources */,
 				50DDA4202A687BDE00ED0CF6 /* TrackerTimetable+CoreDataPersistable.swift in Sources */,
 				504996BC2A4F6C5F00144E3A /* NewTrackerViewControllerDelegate.swift in Sources */,
@@ -784,6 +877,7 @@
 				504996B82A4F446400144E3A /* NewTrackerRouter.swift in Sources */,
 				50E9885B2A55CCD000E4B375 /* NewTrackerColorCollectionViewCellModel.swift in Sources */,
 				50E0642A2A657137006BE3FE /* TrackerCastError.swift in Sources */,
+				50BAB7C12A704B6C007E0D41 /* RootPageViewController.swift in Sources */,
 				50E064312A658755006BE3FE /* TrackerCategoryStoreDelegate.swift in Sources */,
 				5049969B2A4C737D00144E3A /* WeekDay.swift in Sources */,
 				502347F32A41F66B00D41D79 /* CGFloat+Extensions.swift in Sources */,
@@ -800,13 +894,16 @@
 				504996882A49EAF800144E3A /* YPSecondaryButton.swift in Sources */,
 				50E0641F2A655015006BE3FE /* TrackerCategoryStore.swift in Sources */,
 				502348012A423A1F00D41D79 /* TrackerCategory.swift in Sources */,
+				50BAB7DB2A715CF1007E0D41 /* OnboardingPageViewController.swift in Sources */,
 				50E064212A65502B006BE3FE /* TrackerRecordStore.swift in Sources */,
+				50BAB7E02A716469007E0D41 /* OnboardingPageModel.swift in Sources */,
 				504996AF2A4EFC5400144E3A /* DIStorageProtocol.swift in Sources */,
 				504996662A45E83E00144E3A /* TrackersAssembly.swift in Sources */,
 				50E064332A6587E8006BE3FE /* TrackerCategoryStoreProtocol.swift in Sources */,
 				50E0644C2A66F2FB006BE3FE /* TrackerCategory+CoreDataPersistable.swift in Sources */,
 				50E064352A6588CC006BE3FE /* TrackerCategoryStoreError.swift in Sources */,
 				502347FF2A423A0800D41D79 /* Tracker.swift in Sources */,
+				50BAB7D52A712DA3007E0D41 /* RootPageAssembly.swift in Sources */,
 				50E0642F2A6578A0006BE3FE /* TrackerStoreProtocol.swift in Sources */,
 				504996742A470CE500144E3A /* YPPrimaryButton.swift in Sources */,
 				5049965A2A45C0B200144E3A /* TrackersPresenter.swift in Sources */,
@@ -814,6 +911,7 @@
 				5049966F2A46FEF000144E3A /* TrackersCreateAssembly.swift in Sources */,
 				50E988482A55747B00E4B375 /* NewTrackerCollectionViewHeader.swift in Sources */,
 				504996812A47119400144E3A /* NewTrackerAssemblyProtocol.swift in Sources */,
+				50BAB7C62A711804007E0D41 /* RootTabBarAssemblyProtocol.swift in Sources */,
 				50E0643B2A669D85006BE3FE /* TrackerRecordStoreProtocol.swift in Sources */,
 				50E9884E2A55778800E4B375 /* NewTrackerEmojiCollectionViewCellModel.swift in Sources */,
 				5049967F2A47118500144E3A /* NewTrackerAssembly.swift in Sources */,
@@ -827,8 +925,10 @@
 				50E0644F2A670DA4006BE3FE /* TrackerRecord+CoreDataPersistable.swift in Sources */,
 				504996A92A4CC73600144E3A /* TimetableViewControllerDelegate.swift in Sources */,
 				50E064242A65515E006BE3FE /* Tracker.xcdatamodeld in Sources */,
+				50BAB7CD2A7126C1007E0D41 /* RootPageRouterProtocol.swift in Sources */,
 				504996862A49B56600144E3A /* NewTrackerTableViewCell.swift in Sources */,
 				502347FD2A4234C000D41D79 /* TrackersPlaceholderView.swift in Sources */,
+				50BAB7C42A7117F4007E0D41 /* RootTabBarAssembly.swift in Sources */,
 				50E064372A659DA2006BE3FE /* TrackerRecordStoreDelegate.swift in Sources */,
 				5017451E2A5463AE007A1400 /* TrackersPlaceholderViewModel.swift in Sources */,
 				504996612A45C88200144E3A /* ConfigurableViewProtocol.swift in Sources */,

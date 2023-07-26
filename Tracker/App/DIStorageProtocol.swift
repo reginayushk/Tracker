@@ -16,4 +16,6 @@ protocol DIStorageProtocol {
     var newTrackerAssembly: NewTrackerAssemblyProtocol { get }
     var trackersCreateAssembly: TrackersCreateAssemblyProtocol { get }
     var trackersAssembly: TrackersAssemblyProtocol { get }
+    var rootTabBarAssembly: RootTabBarAssemblyProtocol { get }
+    var rootPageAssembly: RootPageAssemblyProtocol { get }
 }

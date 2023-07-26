@@ -40,6 +40,14 @@ final class DIStorage: DIStorageProtocol {
     private(set) lazy var trackersAssembly: TrackersAssemblyProtocol = {
         TrackersAssembly(dependencies: self)
     }()
+    
+    private(set) lazy var rootTabBarAssembly: RootTabBarAssemblyProtocol = {
+        RootTabBarAssembly(dependencies: self)
+    }()
+    
+    private(set) lazy var rootPageAssembly: RootPageAssemblyProtocol = {
+        RootPageAssembly(dependencies: self)
+    }()
 
     // MARK: - Initialize
 

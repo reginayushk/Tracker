@@ -20,6 +20,8 @@ extension CGFloat {
     static let margin24: CGFloat = 24
     static let margin28: CGFloat = 28
     static let margin32: CGFloat = 32
+    static let margin50: CGFloat = 50
+    static let margin64: CGFloat = 64
     
     // MARK: - Size
     
