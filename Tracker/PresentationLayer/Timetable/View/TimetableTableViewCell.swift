@@ -29,7 +29,11 @@ final class TimetableTableViewCell: UITableViewCell {
     
     lazy var timetableSwitcher: UISwitch = {
         let switcher = UISwitch()
-        switcher.addTarget(self, action: #selector(timetableSwitcherDidTap), for: .valueChanged)
+        switcher.addTarget(
+            self,
+            action: #selector(timetableSwitcherDidTap),
+            for: .valueChanged
+        )
         switcher.onTintColor = .ypBlue
         return switcher
     }()

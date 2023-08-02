@@ -13,6 +13,8 @@ protocol DIStorageProtocol {
     var trackerRecordStore: TrackerRecordStoreProtocol { get }
     
     var timetableAssembly: TimetableAssemblyProtocol { get }
+    var addNewCategoryAssembly: AddNewCategoryAssemblyProtocol { get }
+    var categoriesAssembly: CategoriesAssemblyProtocol { get }
     var newTrackerAssembly: NewTrackerAssemblyProtocol { get }
     var trackersCreateAssembly: TrackersCreateAssemblyProtocol { get }
     var trackersAssembly: TrackersAssemblyProtocol { get }

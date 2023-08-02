@@ -28,6 +28,14 @@ final class DIStorage: DIStorageProtocol {
     private(set) lazy var timetableAssembly: TimetableAssemblyProtocol = {
         TimetableAssembly(dependencies: self)
     }()
+    
+    private(set) lazy var addNewCategoryAssembly: AddNewCategoryAssemblyProtocol = {
+        AddNewCategoryAssembly(dependencies: self)
+    }()
+    
+    private(set) lazy var categoriesAssembly: CategoriesAssemblyProtocol = {
+        CategoriesAssembly(dependencies: self)
+    }()
 
     private(set) lazy var newTrackerAssembly: NewTrackerAssemblyProtocol = {
         NewTrackerAssembly(dependencies: self)

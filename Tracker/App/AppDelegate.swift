@@ -27,7 +27,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        initialCoreDataSetUp()
         return true
     }
 
@@ -43,19 +42,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         configuration.sceneClass = UIWindowScene.self
         configuration.delegateClass = SceneDelegate.self
         return configuration
-    }
-    
-    // MARK: - Private
-    
-    private func initialCoreDataSetUp() {
-        let categoryStore = dependenciesStorage.trackerCategoryStore
-        guard
-            let categories = try? categoryStore.fetchCategories(),
-            categories.isEmpty
-        else { return }
-        
-        let initialCategories = DataManager.shared.categories
-        try? initialCategories.forEach { try categoryStore.addNewTrackerCategory($0) }
     }
 }
 

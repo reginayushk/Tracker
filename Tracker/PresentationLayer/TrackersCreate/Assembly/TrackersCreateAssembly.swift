@@ -22,7 +22,9 @@ final class TrackersCreateAssembly: TrackersCreateAssemblyProtocol {
     
     func assemble() -> UIViewController {
         
-        let controller = TrackersCreateViewController(newTrackerAssembly: dependencies.newTrackerAssembly)
+        let controller = TrackersCreateViewController(
+            newTrackerAssembly: dependencies.newTrackerAssembly
+        )
 
         let navigationController = UINavigationController(rootViewController: controller)
 

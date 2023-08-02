@@ -141,7 +141,12 @@ final class NewTrackerViewController: UIViewController {
     // MARK: - Private Properties
     
     private let presenter: NewTrackerPresenterProtocol
-    private var params = GeometricParams(cellCount: 6, leftInset: 16, rightInset: 16, cellSpacing: 6)
+    private var params = GeometricParams(
+        cellCount: 6,
+        leftInset: 16,
+        rightInset: 16,
+        cellSpacing: 6
+    )
     
     // MARK: - Initialize
     
@@ -275,7 +280,12 @@ extension NewTrackerViewController: UITableViewDataSource {
         cell.backgroundColor = .ypLightGray
         
         if indexPath.row == presenter.numberOfRows() - 1 {
-            cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.bounds.size.width, bottom: 0, right: 0)
+            cell.separatorInset = UIEdgeInsets(
+                top: 0,
+                left: tableView.bounds.size.width,
+                bottom: 0,
+                right: 0
+            )
         }
         
         return cell

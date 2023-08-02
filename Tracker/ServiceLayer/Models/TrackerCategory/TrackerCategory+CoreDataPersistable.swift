@@ -15,6 +15,7 @@ extension TrackerCategory: CoreDataPersistable {
     func coreDataModel(context: NSManagedObjectContext) throws -> TrackerCategoryCoreData {
         let model = CoreDataModel(context: context)
         
+        model.id = id
         model.name = name
         
         let trackers = try trackers.compactMap { try $0.coreDataModel(context: context) }
@@ -24,6 +25,9 @@ extension TrackerCategory: CoreDataPersistable {
     }
     
     static func from(coreDataModel: TrackerCategoryCoreData) throws -> TrackerCategory {
+        guard let id = coreDataModel.id else {
+            throw TrackerCategoryStoreError.decodingErrorInvalidCategoryId
+        }
         guard let name = coreDataModel.name else {
             throw TrackerCategoryStoreError.decodingErrorInvalidCategoryName
         }
@@ -32,9 +36,12 @@ extension TrackerCategory: CoreDataPersistable {
             throw TrackerCategoryStoreError.decodingErrorInvalidTrackersInCategory
         }
         
-        let trackers = try trackersCoreData.compactMap { try Tracker.from(coreDataModel: $0) }
+        let trackers = try trackersCoreData.compactMap {
+            try Tracker.from(coreDataModel: $0)
+        }
         
         return TrackerCategory(
+            id: id,
             name: name,
             trackers: trackers
         )

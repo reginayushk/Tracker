@@ -12,7 +12,7 @@ final class NewTrackerTableViewCellModel {
     let title: String
     var description: String?
     
-    internal init(title: String, description: String? = nil) {
+    init(title: String, description: String? = nil) {
         self.title = title
         self.description = description
     }

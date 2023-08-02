@@ -41,10 +41,12 @@ final class NewTrackerPresenter {
     private let dataSourceProvider: DataSourceProviderProtocol = DataSourceProvider()
 
     private var sortedTimetable: [TrackerTimetable] = []
-    private lazy var selectedCategory: TrackerCategory? = try? trackerCategoryStore.fetchCategories().first
-    private lazy var selectedTrackerName = ""
+    private var selectedCategory: TrackerCategory?
+    private var selectedTrackerName = ""
     private var selectedColor: NewTrackerColorCollectionViewCellModel?
     private var selectedEmoji: NewTrackerEmojiCollectionViewCellModel?
+    
+    private var selectedCategoryObservationStore: Observable<TrackerCategory?>?
     
     // MARK: - Initialize
     
@@ -124,7 +126,17 @@ extension NewTrackerPresenter: NewTrackerPresenterProtocol {
     func didSelectRowAt(didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            router.presentCategory()
+            selectedCategoryObservationStore = router.presentCategory(
+                chosenCategory: selectedCategory
+            )
+            
+            selectedCategoryObservationStore?.bind { [weak self] selectedCategory in
+                guard let self else { return }
+                self.selectedCategory = selectedCategory
+                self.options[indexPath.row].description = selectedCategory?.name
+                self.viewController?.reloadCell(at: indexPath)
+            }
+            
         case 1:
             let chosenTimetable = Set(sortedTimetable.map(WeekDay.from(_:)))
             router.presentTimetable(chosenTimetable: chosenTimetable)
