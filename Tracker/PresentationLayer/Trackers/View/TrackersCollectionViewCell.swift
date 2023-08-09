@@ -136,7 +136,22 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
     // MARK: - Public
     
     func setIsCompleted(_ isCompleted: Bool, _ completedDays: Int) {
-        let formattedText = formatDayLabel(daysCount: completedDays)
+//        let formattedText = formatDayLabel(daysCount: completedDays)
+        let localized = NSLocalizedString(
+            "Number of days",
+            comment: ""
+        )
+        let formattedText = String(
+            format: localized,
+            completedDays
+        )
+//        let formattedText = String.localizedStringWithFormat(
+//            NSLocalizedString(
+//                "daysCount",
+//                comment: "Number of completed days"
+//            ),
+//            completedDays
+//        )
         trackerRepetitionLabel.text = formattedText
         
         if isCompleted {
