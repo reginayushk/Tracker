@@ -7,17 +7,23 @@
 
 import UIKit
 
-private extension String {
-    static let addNewCategoryTextFieldPlaceholder = "Введите название категории"
-    static let addNewCategoryActionButtonText = "Готово"
-}
-
 final class AddNewCategoryViewController: UIViewController {
+    
+    // MARK: - Nested types
+    
+    private enum Constants {
+        static let addNewCategoryTextFieldPlaceholder: String = "Введите название категории"
+        static let addNewCategoryActionButtonText: String = "Готово"
+    }
+    
+    // MARK: - Private Properties
+    
+    private var viewModel: AddNewCategoryViewModelProtocol
     
     // UI
     private lazy var addNewCategoryTextField: YPTextField = {
         let textField = YPTextField()
-        textField.placeholder = .addNewCategoryTextFieldPlaceholder
+        textField.placeholder = Constants.addNewCategoryTextFieldPlaceholder
         textField.addTarget(
             self,
             action: #selector(addNewCategoryTextFieldDidChange(textField:)),
@@ -28,7 +34,7 @@ final class AddNewCategoryViewController: UIViewController {
     
     private lazy var addNewCategoryActionButton: YPPrimaryButton = {
         let button = YPPrimaryButton()
-        button.setTitle(.addNewCategoryActionButtonText, for: .normal)
+        button.setTitle(Constants.addNewCategoryActionButtonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(
             self,
@@ -39,10 +45,6 @@ final class AddNewCategoryViewController: UIViewController {
         button.layer.opacity = 0.5
         return button
     }()
-    
-    // MARK: - Private Properties
-    
-    private var viewModel: AddNewCategoryViewModelProtocol
     
     // MARK: - Initialize
     
@@ -61,12 +63,12 @@ final class AddNewCategoryViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Новая категория"
-        setUp()
+        setUpConstraints()
     }
     
     // MARK: - Private
     
-    private func setUp() {
+    private func setUpConstraints() {
         view.backgroundColor = .systemBackground
         [addNewCategoryTextField, addNewCategoryActionButton].forEach { view.addSubview($0) }
         

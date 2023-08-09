@@ -7,27 +7,29 @@
 
 import UIKit
 
-private extension String {
-    static let onboardingButtonText = "Вот это технологии!"
-    static let onboardingLabelTextFirstPage = "Отслеживайте только то, что хотите"
-    static let onboardingLabelTextSecondPage = "Даже если это не литры воды и йога"
-}
-
 final class RootPageViewController: UIPageViewController {
+    
+    // MARK: - Nested types
+    
+    private enum Constants {
+        static let onboardingButtonText: String = "Вот это технологии!"
+        static let onboardingLabelTextFirstPage: String = "Отслеживайте только то, что хотите"
+        static let onboardingLabelTextSecondPage: String = "Даже если это не литры воды и йога"
+    }
 
     // UI
     private lazy var pages: [UIViewController] = {
         let firstOnboarding = OnboardingPageViewController()
         let firstModel = OnboardingPageModel(
             image: UIImage(named: "onboarding") ?? UIImage(),
-            text: .onboardingLabelTextFirstPage
+            text: Constants.onboardingLabelTextFirstPage
         )
         firstOnboarding.configure(with: firstModel)
 
         let secondOnboarding = OnboardingPageViewController()
         let secondModel = OnboardingPageModel(
             image: UIImage(named: "onboarding2") ?? UIImage(),
-            text: .onboardingLabelTextSecondPage
+            text: Constants.onboardingLabelTextSecondPage
         )
         secondOnboarding.configure(with: secondModel)
         
@@ -46,7 +48,7 @@ final class RootPageViewController: UIPageViewController {
     
     private lazy var onboardingButton: YPPrimaryButton = {
         let button = YPPrimaryButton()
-        button.setTitle(.onboardingButtonText, for: .normal)
+        button.setTitle(Constants.onboardingButtonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(
             self,

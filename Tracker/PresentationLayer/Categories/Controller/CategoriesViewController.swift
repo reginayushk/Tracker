@@ -7,18 +7,20 @@
 
 import UIKit
 
-private extension String {
-    static let addCategoryButtonText = "Добавить категорию"
-}
-
 final class CategoriesViewController: UIViewController {
+    
+    // MARK: - Nested types
+    
+    private enum Constants {
+        static let addCategoryButtonText: String = "Добавить категорию"
+    }
     
     // UI
     private lazy var noCategoriesPlaceholderView = TrackersPlaceholderView()
     
     private lazy var addCategoryButton: YPPrimaryButton = {
         let button = YPPrimaryButton()
-        button.setTitle(.addCategoryButtonText, for: .normal)
+        button.setTitle(Constants.addCategoryButtonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(
             self,
@@ -81,7 +83,7 @@ final class CategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Категория"
-        setUp()
+        setUpConstraints()
 
         viewModel.observableTrackerCategories.bind { [weak self] _ in
             self?.updateTableViewHeight()
@@ -98,7 +100,7 @@ final class CategoriesViewController: UIViewController {
     
     // MARK: - Private
     
-    private func setUp() {
+    private func setUpConstraints() {
         view.backgroundColor = .systemBackground
         [noCategoriesPlaceholderView, categoriesTableView, addCategoryButton].forEach { view.addSubview($0) }
         

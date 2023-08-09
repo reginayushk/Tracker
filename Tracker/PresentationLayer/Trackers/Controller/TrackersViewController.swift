@@ -17,7 +17,11 @@ final class TrackersViewController: UIViewController {
         datePicker.locale = Locale(identifier: "ru_RU")
         datePicker.calendar.firstWeekday = 2
         datePicker.tintColor = .ypBlue
-        datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        datePicker.addTarget(
+            self,
+            action: #selector(dateChanged),
+            for: .valueChanged
+        )
         return datePicker
     }()
     
@@ -34,8 +38,15 @@ final class TrackersViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(TrackersCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.register(TrackersHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
+        collectionView.register(
+            TrackersCollectionViewCell.self,
+            forCellWithReuseIdentifier: "cell"
+        )
+        collectionView.register(
+            TrackersHeader.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: "header"
+        )
         return collectionView
     }()
     
