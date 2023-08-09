@@ -26,7 +26,7 @@ extension Tracker: CoreDataPersistable {
         
         model.emoji = emoji
         
-        if let repetition = try repetition?.map({ try $0.coreDataModel(context: context) }) {
+        if let repetition = try repetition?.map({ try $0.coreDataModel(context: context) }), !repetition.isEmpty {
             model.repetition = NSSet(array: repetition)
         }
         

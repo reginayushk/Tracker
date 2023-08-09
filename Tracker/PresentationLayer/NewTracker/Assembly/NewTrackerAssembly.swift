@@ -21,7 +21,10 @@ final class NewTrackerAssembly: NewTrackerAssemblyProtocol {
     // MARK: - TrackersCreateAssemblyProtocol
     
     func assemble(isRegular: Bool) -> UIViewController {
-        let router = NewTrackerRouter(timetableAssembly: dependencies.timetableAssembly)
+        let router = NewTrackerRouter(
+            timetableAssembly: dependencies.timetableAssembly,
+            categoriesAssembly: dependencies.categoriesAssembly
+        )
         
         let presenter = NewTrackerPresenter(
             router: router,
@@ -37,7 +40,9 @@ final class NewTrackerAssembly: NewTrackerAssemblyProtocol {
         router.transitionHandler = controller
         router.timetableDelegate = controller
 
-        let navigationController = UINavigationController(rootViewController: controller)
+        let navigationController = UINavigationController(
+            rootViewController: controller
+        )
 
         return navigationController
     }

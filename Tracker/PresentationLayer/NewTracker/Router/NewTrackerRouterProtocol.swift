@@ -8,6 +8,6 @@
 import Foundation
 
 protocol NewTrackerRouterProtocol {
-    func presentCategory()
+    func presentCategory(chosenCategory: TrackerCategory?) -> Observable<TrackerCategory?>
     func presentTimetable(chosenTimetable: Set<WeekDay>?)
 }

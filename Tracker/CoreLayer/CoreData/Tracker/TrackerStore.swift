@@ -63,7 +63,10 @@ extension TrackerStore: TrackerStoreProtocol {
     
     func addNewTracker(_ tracker: Tracker, at category: TrackerCategory) throws {
         let categoryFetchRequest = TrackerCategoryCoreData.fetchRequest()
-        categoryFetchRequest.predicate = NSPredicate(format: "name = %@", category.name)
+        categoryFetchRequest.predicate = NSPredicate(
+            format: "id = %@",
+            category.id as CVarArg
+        )
         let categoryCoreData = try context.fetch(categoryFetchRequest).first
         
         let trackerCoreData = try tracker.coreDataModel(context: context)

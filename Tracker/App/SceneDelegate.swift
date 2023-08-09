@@ -22,9 +22,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
-        let tabBarController = TabBarController(dependenciesStorage: dependenciesStorage)
-        window.rootViewController = tabBarController
-        self.window = window
-        window.makeKeyAndVisible()
+        
+        if (UserDefaults.standard.bool(forKey: "OnboardingDidShow") == false) {
+            UserDefaults.standard.set(true, forKey: "OnboardingDidShow")
+            let rootPageViewController = dependenciesStorage.rootPageAssembly.assemble(
+                window: window
+            )
+            window.rootViewController = rootPageViewController
+            self.window = window
+            window.makeKeyAndVisible()
+        } else {
+            let rootTabBarController = dependenciesStorage.rootTabBarAssembly.assemble()
+            window.rootViewController = rootTabBarController
+            self.window = window
+            window.makeKeyAndVisible()
+        }
     }
 }

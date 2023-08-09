@@ -13,7 +13,8 @@ protocol TrackerCategoryStoreProtocol: AnyObject {
     var fetchedResultsController: NSFetchedResultsController<TrackerCategoryCoreData> { get }
     
     var delegate: TrackerCategoryStoreDelegate? { get set }
-    
+
     func fetchCategories() throws -> [TrackerCategory]
+
     func addNewTrackerCategory(_ trackerCategory: TrackerCategory) throws
 }

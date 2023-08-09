@@ -26,4 +26,9 @@ final class TrackersPlaceholderViewModel {
         image: UIImage(named: "error") ?? UIImage(),
         description: "Ничего не найдено"
     )
+    
+    static let emptyCategories = TrackersPlaceholderViewModel(
+        image: UIImage(named: "default") ?? UIImage(),
+        description: "Привычки и события можно объединить по смыслу"
+    )
 }

@@ -28,6 +28,14 @@ final class DIStorage: DIStorageProtocol {
     private(set) lazy var timetableAssembly: TimetableAssemblyProtocol = {
         TimetableAssembly(dependencies: self)
     }()
+    
+    private(set) lazy var addNewCategoryAssembly: AddNewCategoryAssemblyProtocol = {
+        AddNewCategoryAssembly(dependencies: self)
+    }()
+    
+    private(set) lazy var categoriesAssembly: CategoriesAssemblyProtocol = {
+        CategoriesAssembly(dependencies: self)
+    }()
 
     private(set) lazy var newTrackerAssembly: NewTrackerAssemblyProtocol = {
         NewTrackerAssembly(dependencies: self)
@@ -39,6 +47,14 @@ final class DIStorage: DIStorageProtocol {
 
     private(set) lazy var trackersAssembly: TrackersAssemblyProtocol = {
         TrackersAssembly(dependencies: self)
+    }()
+    
+    private(set) lazy var rootTabBarAssembly: RootTabBarAssemblyProtocol = {
+        RootTabBarAssembly(dependencies: self)
+    }()
+    
+    private(set) lazy var rootPageAssembly: RootPageAssemblyProtocol = {
+        RootPageAssembly(dependencies: self)
     }()
 
     // MARK: - Initialize

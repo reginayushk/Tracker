@@ -13,20 +13,37 @@ final class NewTrackerRouter: NewTrackerRouterProtocol {
     weak var transitionHandler: UIViewController?
     weak var timetableDelegate: TimetableViewControllerDelegate?
     private let timetableAssembly: TimetableAssemblyProtocol
+    private let categoriesAssembly: CategoriesAssemblyProtocol
     
     // MARK: - Initialize
     
     init(
         transitionHandler: UIViewController? = nil,
-        timetableAssembly: TimetableAssemblyProtocol
+        timetableAssembly: TimetableAssemblyProtocol,
+        categoriesAssembly: CategoriesAssemblyProtocol
     ) {
         self.transitionHandler = transitionHandler
         self.timetableAssembly = timetableAssembly
+        self.categoriesAssembly = categoriesAssembly
     }
     
     // MARK: - NewTrackerRouterProtocol
     
-    func presentCategory() {
+    func presentCategory(chosenCategory: TrackerCategory?) -> Observable<TrackerCategory?> {
+        let categoriesViewController = categoriesAssembly.assemble(
+            chosenCategory: chosenCategory
+        )
+        
+        let navigationController = UINavigationController(
+            rootViewController: categoriesViewController
+        )
+        
+        transitionHandler?.navigationController?.present(
+            navigationController,
+            animated: true
+        )
+        
+        return categoriesViewController.observableSelectedTrackerCategory
     }
     
     func presentTimetable(chosenTimetable: Set<WeekDay>?) {
@@ -34,6 +51,9 @@ final class NewTrackerRouter: NewTrackerRouterProtocol {
             delegate: timetableDelegate,
             chosenTimetable: chosenTimetable
         )
-        transitionHandler?.navigationController?.present(timetableViewController, animated: true)
+        transitionHandler?.navigationController?.present(
+            timetableViewController,
+            animated: true
+        )
     }
 }
