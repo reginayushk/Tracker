@@ -8,28 +8,28 @@
 import UIKit
 
 final class RootPageViewController: UIPageViewController {
-    
-    // MARK: - Nested types
-    
-    private enum Constants {
-        static let onboardingButtonText: String = "Вот это технологии!"
-        static let onboardingLabelTextFirstPage: String = "Отслеживайте только то, что хотите"
-        static let onboardingLabelTextSecondPage: String = "Даже если это не литры воды и йога"
-    }
 
     // UI
     private lazy var pages: [UIViewController] = {
         let firstOnboarding = OnboardingPageViewController()
+        let firstOnboardingText = NSLocalizedString(
+            "onboardingLabelFirst.text",
+            comment: "Text displayed on RootPageViewController's first page"
+        )
         let firstModel = OnboardingPageModel(
             image: UIImage(named: "onboarding") ?? UIImage(),
-            text: Constants.onboardingLabelTextFirstPage
+            text: firstOnboardingText
         )
         firstOnboarding.configure(with: firstModel)
 
         let secondOnboarding = OnboardingPageViewController()
+        let secondOnboardingText = NSLocalizedString(
+            "onboardingLabelSecond.text",
+            comment: "Text displayed on RootPageViewController's second page"
+        )
         let secondModel = OnboardingPageModel(
             image: UIImage(named: "onboarding2") ?? UIImage(),
-            text: Constants.onboardingLabelTextSecondPage
+            text: secondOnboardingText
         )
         secondOnboarding.configure(with: secondModel)
         
@@ -48,7 +48,11 @@ final class RootPageViewController: UIPageViewController {
     
     private lazy var onboardingButton: YPPrimaryButton = {
         let button = YPPrimaryButton()
-        button.setTitle(Constants.onboardingButtonText, for: .normal)
+        let buttonText = NSLocalizedString(
+            "onboardingButton.text",
+            comment: "Text displayed on RootPageViewController's onboardingButton"
+        )
+        button.setTitle(buttonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(
             self,

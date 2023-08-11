@@ -7,12 +7,6 @@
 
 import UIKit
 
-private extension String {
-    static let newHabitNameTextFieldPlaceholder = "Введите название трекера"
-    static let cancelButtonText = "Отменить"
-    static let createButtonText = "Создать"
-}
-
 private extension CGFloat {
     static let collectionViewHeight: CGFloat = 238
 }
@@ -35,8 +29,16 @@ final class NewTrackerViewController: UIViewController {
     private lazy var newHabitNameTextField: YPTextField = {
         let textField = YPTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = .newHabitNameTextFieldPlaceholder
-        textField.addTarget(self, action: #selector(newHabitNameTextFieldDidChange(textField:)), for: .editingChanged)
+        let textFieldText = NSLocalizedString(
+            "newHabitNameTextField.text",
+            comment: "Text displayed on NewTrackerViewController's newHabitNameTextField"
+        )
+        textField.placeholder = textFieldText
+        textField.addTarget(
+            self,
+            action: #selector(newHabitNameTextFieldDidChange(textField:)),
+            for: .editingChanged
+        )
         textField.delegate = self
         return textField
     }()
@@ -48,7 +50,12 @@ final class NewTrackerViewController: UIViewController {
         tableView.isScrollEnabled = false
         
         tableView.separatorStyle = .singleLine
-        tableView.separatorInset = UIEdgeInsets(top: .zero, left: .margin16, bottom: .zero, right: .margin16)
+        tableView.separatorInset = UIEdgeInsets(
+            top: .zero,
+            left: .margin16,
+            bottom: .zero,
+            right: .margin16
+        )
         
         tableView.layer.cornerRadius = .cornerRadius16
         
@@ -64,7 +71,10 @@ final class NewTrackerViewController: UIViewController {
     }()
     
     private var commonCollectionView: UICollectionView {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: UICollectionViewFlowLayout()
+        )
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         collectionView.isScrollEnabled = false
@@ -114,7 +124,11 @@ final class NewTrackerViewController: UIViewController {
     
     private lazy var cancelButton: YPSecondaryButton = {
         let button = YPSecondaryButton()
-        button.setTitle(.cancelButtonText, for: .normal)
+        let buttonText = NSLocalizedString(
+            "cancelButton.text",
+            comment: "Text displayed on NewTrackerViewController's cancelButton"
+        )
+        button.setTitle(buttonText, for: .normal)
         button.setTitleColor(.ypRed, for: .normal)
         button.addTarget(
             self,
@@ -126,7 +140,11 @@ final class NewTrackerViewController: UIViewController {
     
     private lazy var createButton: YPPrimaryButton = {
         let button = YPPrimaryButton()
-        button.setTitle(.createButtonText, for: .normal)
+        let buttonText = NSLocalizedString(
+            "createButton.text",
+            comment: "Text displayed on NewTrackerViewController's createButton"
+        )
+        button.setTitle(buttonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.isEnabled = false
         button.layer.opacity = 0.5
@@ -377,7 +395,12 @@ extension NewTrackerViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-        UIEdgeInsets(top: 24, left: params.leftInset, bottom: 24, right: params.rightInset)
+        UIEdgeInsets(
+            top: 24,
+            left: params.leftInset,
+            bottom: 24,
+            right: params.rightInset
+        )
     }
     
     func collectionView(
@@ -387,7 +410,11 @@ extension NewTrackerViewController: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
 
         let indexPath = IndexPath(row: 0, section: section)
-        let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
+        let headerView = self.collectionView(
+            collectionView,
+            viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader,
+            at: indexPath
+        )
         
         return headerView.systemLayoutSizeFitting(
             CGSize(

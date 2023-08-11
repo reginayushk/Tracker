@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Tracker
+
+  Created by Regina Yushkova on 11.08.2023.
+  
+*/
+
+"trackers.title" = "Трекеры";
+"trackersCreate.title" = "Создание трекера";
+"habitButton.text" = "Привычка";
+"irregularEventButton.text" = "Нерегулярное событие";
+"newHabitNameTextField.text" = "Введите название трекера";
+"cancelButton.text" = "Отменить";
+"createButton.text" = "Создать";
+"newTrackerCategory.text" = "Категория";
+"newTrackerTimetable.text" = "Расписание";
+"newTrackerColor.title" = "Цвет";
+"newTrackerHabit.title" = "Новая привычка";
+"newTrackerIrregularEvent.title" = "Новое нерегулярное событие";
+"newTrackerTimetableEveryDay.text" = "Каждый день";
+"categoriesAddCategoryButton.text" = "Добавить категорию";
+"addNewCategoryTextField.text" = "Введите название категории";
+"addNewCategoryActionButton.text" = "Готово";
+"timetableDoneButton.text" = "Готово";
+"timetable.title" = "Расписание";
+"tabBarTrackers.title" = "Трекеры";
+"tabBarStatictics.title" = "Статистика";
+"onboardingButton.text" = "Вот это технологии!";
+"onboardingLabelFirst.text" = "Отслеживайте только то, что хотите";
+"onboardingLabelSecond.text" = "Даже если это не литры воды и йога";

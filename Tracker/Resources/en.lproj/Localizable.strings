@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Tracker
+
+  Created by Regina Yushkova on 11.08.2023.
+  
+*/
+
+"trackers.title" = "Trackers";
+"trackersCreate.title" = "Creating a tracker";
+"habitButton.text" = "Habit";
+"irregularEventButton.text" = "Irregular event";
+"newHabitNameTextField.text" = "Enter the name of the tracker";
+"cancelButton.text" = "Cancel";
+"createButton.text" = "Create";
+"newTrackerCategory.text" = "Category";
+"newTrackerTimetable.text" = "Timetable";
+"newTrackerColor.title" = "Color";
+"newTrackerHabit.title" = "New habit";
+"newTrackerIrregularEvent.title" = "New irregular event";
+"newTrackerTimetableEveryDay.text" = "Every day";
+"categoriesAddCategoryButton.text" = "Add category";
+"addNewCategoryTextField.text" = "Enter the category name";
+"addNewCategoryActionButton.text" = "Done";
+"timetableDoneButton.text" = "Done";
+"timetable.title" = "Timetable";
+"tabBarTrackers.title" = "Trackers";
+"tabBarStatictics.title" = "Statistics";
+"onboardingButton.text" = "These are technologies!";
+"onboardingLabelFirst.text" = "Track only what you want";
+"onboardingLabelSecond.text" = "Even if it's not liters of water and yoga";

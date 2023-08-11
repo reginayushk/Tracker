@@ -62,6 +62,7 @@
 		504996BC2A4F6C5F00144E3A /* NewTrackerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504996BB2A4F6C5F00144E3A /* NewTrackerViewControllerDelegate.swift */; };
 		504996C02A4FA4DD00144E3A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504996BF2A4FA4DD00144E3A /* TabBarController.swift */; };
 		5074D82C2A83B0E700BD9D4B /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 5074D82E2A83B0E700BD9D4B /* Localizable.stringsdict */; };
+		5074D83D2A863B6700BD9D4B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5074D83F2A863B6700BD9D4B /* Localizable.strings */; };
 		50BAB7C12A704B6C007E0D41 /* RootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7C02A704B6C007E0D41 /* RootPageViewController.swift */; };
 		50BAB7C42A7117F4007E0D41 /* RootTabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7C32A7117F4007E0D41 /* RootTabBarAssembly.swift */; };
 		50BAB7C62A711804007E0D41 /* RootTabBarAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAB7C52A711804007E0D41 /* RootTabBarAssemblyProtocol.swift */; };
@@ -179,6 +180,8 @@
 		504996BF2A4FA4DD00144E3A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5074D82D2A83B0E700BD9D4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		5074D82F2A83B0EB00BD9D4B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		5074D83E2A863B6700BD9D4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5074D8402A863B6B00BD9D4B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50BAB7C02A704B6C007E0D41 /* RootPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageViewController.swift; sourceTree = "<group>"; };
 		50BAB7C32A7117F4007E0D41 /* RootTabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarAssembly.swift; sourceTree = "<group>"; };
 		50BAB7C52A711804007E0D41 /* RootTabBarAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarAssemblyProtocol.swift; sourceTree = "<group>"; };
@@ -251,6 +254,7 @@
 		500A7A662A41CA3F00070C40 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5074D83F2A863B6700BD9D4B /* Localizable.strings */,
 				5074D82E2A83B0E700BD9D4B /* Localizable.stringsdict */,
 				50330A3C2A3B92BF0073FB6D /* Assets.xcassets */,
 				50330A3E2A3B92BF0073FB6D /* LaunchScreen.storyboard */,
@@ -955,6 +959,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50330A402A3B92BF0073FB6D /* LaunchScreen.storyboard in Resources */,
+				5074D83D2A863B6700BD9D4B /* Localizable.strings in Resources */,
 				50330A3D2A3B92BF0073FB6D /* Assets.xcassets in Resources */,
 				5074D82C2A83B0E700BD9D4B /* Localizable.stringsdict in Resources */,
 			);
@@ -1096,6 +1101,15 @@
 				5074D82F2A83B0EB00BD9D4B /* ru */,
 			);
 			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+		5074D83F2A863B6700BD9D4B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5074D83E2A863B6700BD9D4B /* en */,
+				5074D8402A863B6B00BD9D4B /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

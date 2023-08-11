@@ -19,16 +19,24 @@ final class NewTrackerPresenter {
     
     private let isRegular: Bool
     private lazy var options: [NewTrackerTableViewCellModel] = {
+        let newTrackerCategoryText = NSLocalizedString(
+            "newTrackerCategory.text",
+            comment: "Text displayed on NewTrackerViewController's newHabitTableView's Category cell"
+        )
+        let newTrackerTimetableText = NSLocalizedString(
+            "newTrackerTimetable.text",
+            comment: "Text displayed on NewTrackerViewController's newHabitTableView's Timetable cell"
+        )
         var options: [NewTrackerTableViewCellModel] = [
             NewTrackerTableViewCellModel(
-                title: "Категория",
+                title: newTrackerCategoryText,
                 description: selectedCategory?.name
             )
         ]
         if isRegular {
             options.append(
                 NewTrackerTableViewCellModel(
-                    title: "Расписание",
+                    title: newTrackerTimetableText,
                     description: nil
                 )
             )
@@ -36,7 +44,13 @@ final class NewTrackerPresenter {
         return options
     }()
     private lazy var emojiHeader = NewTrackerCollectionViewHeaderModel(title: "Emoji")
-    private lazy var colorHeader = NewTrackerCollectionViewHeaderModel(title: "Цвет")
+    private let colorHeaderText = NSLocalizedString(
+        "newTrackerColor.title",
+        comment: "Text displayed on NewTrackerViewController's colorCollectionView"
+    )
+    private lazy var colorHeader = NewTrackerCollectionViewHeaderModel(
+        title: colorHeaderText
+    )
 
     private let dataSourceProvider: DataSourceProviderProtocol = DataSourceProvider()
 
@@ -70,7 +84,15 @@ final class NewTrackerPresenter {
 extension NewTrackerPresenter: NewTrackerPresenterProtocol {
 
     var title: String {
-        return isRegular ? "Новая привычка" : "Новое нерегулярное событие"
+        let newTrackerHabitTitle = NSLocalizedString(
+            "newTrackerHabit.title",
+            comment: "Title displayed on NewTrackerViewController's habit"
+        )
+        let newTrackerIrregularEventTitle = NSLocalizedString(
+            "newTrackerIrregularEvent.title",
+            comment: "Title displayed on NewTrackerViewController's irregular event"
+        )
+        return isRegular ? newTrackerHabitTitle : newTrackerIrregularEventTitle
     }
     
     func numberOfItemsInEmojiCollectionView() -> Int {
@@ -111,7 +133,11 @@ extension NewTrackerPresenter: NewTrackerPresenterProtocol {
         
         var localizedTimetable = ""
         if sortedTimetable.count == TrackerTimetable.allCases.count {
-            localizedTimetable = "Каждый день"
+            let newTrackerTimetableText = NSLocalizedString(
+                "newTrackerTimetableEveryDay.text",
+                comment: "Title displayed on NewTrackerViewController's newHabitTableView's Timetable cell for every day"
+            )
+            localizedTimetable = newTrackerTimetableText
         } else {
             let shortLocalizations = sortedTimetable.map { $0.shortLocalization }
             localizedTimetable = shortLocalizations.joined(separator: ", ")

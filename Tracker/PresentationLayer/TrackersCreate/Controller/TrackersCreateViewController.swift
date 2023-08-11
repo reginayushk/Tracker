@@ -7,11 +7,6 @@
 
 import UIKit
 
-private extension String {
-    static let habitButtonText = "Привычка"
-    static let irregularEventButtonText = "Нерегулярное событие"
-}
-
 final class TrackersCreateViewController: UIViewController {
     
     // UI
@@ -39,11 +34,23 @@ final class TrackersCreateViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         navigationItem.largeTitleDisplayMode = .never
-        title = "Создание трекера"
+        let trackersCreateTitle = NSLocalizedString(
+            "trackersCreate.title",
+            comment: "Text displayed on TrackersCreateViewController"
+        )
+        title = trackersCreateTitle
         setUp()
 
-        habitButton.setTitle(.habitButtonText, for: .normal)
-        irregularEventButton.setTitle(.irregularEventButtonText, for: .normal)
+        let habitButtonText = NSLocalizedString(
+            "habitButton.text",
+            comment: "Text displayed on TrackersCreateViewController's habitButton"
+        )
+        habitButton.setTitle(habitButtonText, for: .normal)
+        let irregularEventButtonText = NSLocalizedString(
+            "irregularEventButton.text",
+            comment: "Text displayed on TrackersCreateViewController's irregularEventButton"
+        )
+        irregularEventButton.setTitle(irregularEventButtonText, for: .normal)
 
         habitButton.addTarget(
             nil,
@@ -61,8 +68,7 @@ final class TrackersCreateViewController: UIViewController {
     
     private func setUp() {
         view.backgroundColor = .systemBackground
-        view.addSubview(habitButton)
-        view.addSubview(irregularEventButton)
+        [habitButton, irregularEventButton].forEach { view.addSubview($0) }
         
         NSLayoutConstraint.activate([
             habitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .margin20),

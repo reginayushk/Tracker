@@ -24,7 +24,14 @@ final class YPTextField: UITextField {
         backgroundColor = .ypLightGray
         font = UIFont.systemFont(ofSize: .size17)
         
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: .textFieldLeadingAnchor, height: frame.height))
+        let paddingView = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: .textFieldLeadingAnchor,
+                height: frame.height
+            )
+        )
         leftView = paddingView
         leftViewMode = .always
 

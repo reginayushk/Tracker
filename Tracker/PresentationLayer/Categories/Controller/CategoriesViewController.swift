@@ -9,18 +9,16 @@ import UIKit
 
 final class CategoriesViewController: UIViewController {
     
-    // MARK: - Nested types
-    
-    private enum Constants {
-        static let addCategoryButtonText: String = "Добавить категорию"
-    }
-    
     // UI
     private lazy var noCategoriesPlaceholderView = TrackersPlaceholderView()
     
     private lazy var addCategoryButton: YPPrimaryButton = {
         let button = YPPrimaryButton()
-        button.setTitle(Constants.addCategoryButtonText, for: .normal)
+        let buttonText = NSLocalizedString(
+            "categoriesAddCategoryButton.text",
+            comment: "Text displayed on CategoriesViewController's addCategoryButton"
+        )
+        button.setTitle(buttonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(
             self,

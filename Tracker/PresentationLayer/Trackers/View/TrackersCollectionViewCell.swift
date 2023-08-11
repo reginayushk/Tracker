@@ -61,7 +61,11 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         button.layer.cornerRadius = .cornerRadius17
         button.layer.masksToBounds = true
         button.tintColor = .white
-        button.addTarget(self, action: #selector(trackerCompletionButtonDidTap), for: .touchUpInside)
+        button.addTarget(
+            self,
+            action: #selector(trackerCompletionButtonDidTap),
+            for: .touchUpInside
+        )
         return button
     }()
     
@@ -136,7 +140,6 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
     // MARK: - Public
     
     func setIsCompleted(_ isCompleted: Bool, _ completedDays: Int) {
-//        let formattedText = formatDayLabel(daysCount: completedDays)
         let localized = NSLocalizedString(
             "Number of days",
             comment: ""
@@ -145,13 +148,6 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
             format: localized,
             completedDays
         )
-//        let formattedText = String.localizedStringWithFormat(
-//            NSLocalizedString(
-//                "daysCount",
-//                comment: "Number of completed days"
-//            ),
-//            completedDays
-//        )
         trackerRepetitionLabel.text = formattedText
         
         if isCompleted {
@@ -161,24 +157,6 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
             trackerCompletionButton.setImage(UIImage(systemName: "plus"), for: .normal)
             trackerCompletionButton.layer.opacity = 1
         }
-    }
-    
-    // MARK: - Private
-    
-    private func formatDayLabel(daysCount: Int) -> String {
-        let suffix: String
-        
-        if daysCount % 10 == 1 && daysCount % 100 != 11 {
-            suffix = "день"
-        } else if (daysCount % 10 == 2 && daysCount % 100 != 12) ||
-                    (daysCount % 10 == 3 && daysCount % 100 != 13) ||
-                    (daysCount % 10 == 4 && daysCount % 100 != 14) {
-            suffix = "дня"
-        } else {
-            suffix = "дней"
-        }
-        
-        return "\(daysCount) \(suffix)"
     }
 }
 

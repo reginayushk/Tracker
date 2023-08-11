@@ -7,10 +7,6 @@
 
 import UIKit
 
-private extension String {
-    static let doneButtonText = "Готово"
-}
-
 final class TimetableViewController: UIViewController {
     
     // UI
@@ -37,7 +33,11 @@ final class TimetableViewController: UIViewController {
     
     private lazy var doneButton: YPPrimaryButton = {
         let button = YPPrimaryButton()
-        button.setTitle(.doneButtonText, for: .normal)
+        let buttonText = NSLocalizedString(
+            "timetableDoneButton.text",
+            comment: "Text displayed on TimetableViewController's doneButton"
+        )
+        button.setTitle(buttonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(doneButtonDidTap), for: .touchUpInside)
         return button
@@ -67,7 +67,11 @@ final class TimetableViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
-        title = "Расписание"
+        let timetableTitle = NSLocalizedString(
+            "timetable.title",
+            comment: "Text displayed on TimetableViewController"
+        )
+        title = timetableTitle
         setUpUI()
     }
     
@@ -75,8 +79,7 @@ final class TimetableViewController: UIViewController {
     
     private func setUpUI() {
         view.backgroundColor = .systemBackground
-        view.addSubview(timetableTableView)
-        view.addSubview(doneButton)
+        [timetableTableView, doneButton].forEach { view.addSubview($0) }
         
         NSLayoutConstraint.activate([
             timetableTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: .margin24),
@@ -111,7 +114,11 @@ extension TimetableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let timetableCell = tableView.dequeueReusableCell(withIdentifier: TimetableTableViewCell.reuseIdentifier, for: indexPath) as? TimetableTableViewCell else { return UITableViewCell() }
+        guard let timetableCell = tableView.dequeueReusableCell(
+            withIdentifier: TimetableTableViewCell.reuseIdentifier,
+            for: indexPath) as? TimetableTableViewCell else {
+            return UITableViewCell()
+        }
         timetableCell.delegate = self
         timetableCell.backgroundColor = .ypLightGray
         timetableCell.selectionStyle = .none
@@ -123,7 +130,12 @@ extension TimetableViewController: UITableViewDataSource {
         timetableCell.timetableSwitcher.isOn = timetableIsSet
         
         if indexPath.row == WeekDay.allCases.count - 1 {
-            timetableCell.separatorInset = UIEdgeInsets(top: 0, left: tableView.bounds.size.width, bottom: 0, right: 0)
+            timetableCell.separatorInset = UIEdgeInsets(
+                top: 0,
+                left: tableView.bounds.size.width,
+                bottom: 0,
+                right: 0
+            )
         }
 
         return timetableCell

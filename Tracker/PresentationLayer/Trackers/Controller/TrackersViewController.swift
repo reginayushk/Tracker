@@ -108,7 +108,11 @@ final class TrackersViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.searchController = searchController
 
-        title = "Трекеры"
+        let trackersTitle = NSLocalizedString(
+            "trackers.title",
+            comment: "Text displayed on TrackersViewController"
+        )
+        title = trackersTitle
     }
     
     private func setUp() {

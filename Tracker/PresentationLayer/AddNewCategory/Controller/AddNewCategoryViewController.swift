@@ -9,13 +9,6 @@ import UIKit
 
 final class AddNewCategoryViewController: UIViewController {
     
-    // MARK: - Nested types
-    
-    private enum Constants {
-        static let addNewCategoryTextFieldPlaceholder: String = "Введите название категории"
-        static let addNewCategoryActionButtonText: String = "Готово"
-    }
-    
     // MARK: - Private Properties
     
     private var viewModel: AddNewCategoryViewModelProtocol
@@ -23,7 +16,11 @@ final class AddNewCategoryViewController: UIViewController {
     // UI
     private lazy var addNewCategoryTextField: YPTextField = {
         let textField = YPTextField()
-        textField.placeholder = Constants.addNewCategoryTextFieldPlaceholder
+        let textFieldText = NSLocalizedString(
+            "addNewCategoryTextField.text",
+            comment: "Text displayed on AddNewCategoryViewController's textField"
+        )
+        textField.placeholder = textFieldText
         textField.addTarget(
             self,
             action: #selector(addNewCategoryTextFieldDidChange(textField:)),
@@ -34,7 +31,11 @@ final class AddNewCategoryViewController: UIViewController {
     
     private lazy var addNewCategoryActionButton: YPPrimaryButton = {
         let button = YPPrimaryButton()
-        button.setTitle(Constants.addNewCategoryActionButtonText, for: .normal)
+        let buttonText = NSLocalizedString(
+            "addNewCategoryActionButton.text",
+            comment: "Text displayed on AddNewCategoryViewController's button"
+        )
+        button.setTitle(buttonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(
             self,
